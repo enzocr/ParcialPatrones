@@ -71,17 +71,21 @@ public class Mesa {
 		int mayor = 0;
 
 		for (Jugador jugador : listaJugadores) {
-
-			for (Carta carta : jugador.getMano()) {
-				valor += carta.getValor();
-			}
-			if (valor == mayor) {
-				ganador = new Jugador("EMPATE");
-			}
-			if (valor > mayor) {
+			if (verificar21YMedio(jugador.getMano())) {
 				ganador = jugador;
-			}
+				return ganador;
+			} else {
 
+				for (Carta carta : jugador.getMano()) {
+					valor += carta.getValor();
+				}
+				if (valor == mayor) {
+					ganador = new Jugador("EMPATE");
+				}
+				if (valor > mayor) {
+					ganador = jugador;
+				}
+			}
 		}
 		return ganador;
 	}
@@ -106,6 +110,25 @@ public class Mesa {
 				valido++;
 			}
 			if (carta.getNombre().equals("Tres")) {
+				valido++;
+			}
+		}
+		if (valido == 2) {
+			return true;
+
+		} else {
+			return false;
+		}
+	}
+
+	public boolean verificar21YMedio(ArrayList<Carta> mano) {
+		int valido = 0;
+		for (Carta carta : mano) {
+			if (carta.getNombre().equals("Jota") || carta.getNombre().equals("Quina")
+					|| carta.getNombre().equals("Ka")) {
+				valido++;
+			}
+			if (carta.getNombre().equals("Dos")) {
 				valido++;
 			}
 		}

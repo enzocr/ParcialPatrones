@@ -72,4 +72,14 @@ public class MesaTest {
 		assertTrue(mesa.verificarCambio(mano));
 	}
 
+	@Test
+	public void verificar21YMedio() throws Exception {
+		ArrayList<Carta> mano = new ArrayList<>();
+		Carta c1 = new Carta("Jota", "Flores", 10);
+		Carta c2 = new Carta("Dos", "Flores", 2);
+		mano.add(c1);
+		mano.add(c2);
+		assertTrue(mesa.verificar21YMedio(mano));
+	}
+
 }
