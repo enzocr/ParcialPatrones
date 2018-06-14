@@ -50,6 +50,16 @@ public class MesaTest {
 		assertTrue(mesa.addJugador(jugadorNoAgregado));
 	}
 
+	@Test
+	public void verificarComodin() throws Exception {
+		ArrayList<Carta> mano = new ArrayList<>();
+		Carta c1 = new Carta("Jota", "Escudos", 10);
+		Carta c2 = new Carta("Tres", "Flores", 3);
+		mano.add(c1);
+		mano.add(c2);
+		assertTrue(mesa.verificarComodin(mano));
+	}
+
 	@Test(expected = NullPointerException.class)
 	public void empezar21() throws Exception {
 		mesa.empezarAJugar21();

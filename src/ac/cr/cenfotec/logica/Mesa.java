@@ -71,7 +71,12 @@ public class Mesa {
 		int mayor = 0;
 
 		for (Jugador jugador : listaJugadores) {
-			if (verificar21YMedio(jugador.getMano())) {
+			if (verificarComodin(jugador.getMano())) {
+				ganador = jugador;
+				return ganador;
+			}
+
+			else if (verificar21YMedio(jugador.getMano())) {
 				ganador = jugador;
 				return ganador;
 			} else {
@@ -100,6 +105,17 @@ public class Mesa {
 			}
 
 		}
+	}
+
+	public boolean verificarComodin(ArrayList<Carta> mano) {
+
+		for (Carta carta : mano) {
+			if (carta.getNombre().equals("Jota") && carta.getPalo().equals("Escudos")) {
+				return true;
+			}
+		}
+		return false;
+
 	}
 
 	public boolean verificarCambio(ArrayList<Carta> mano) {
