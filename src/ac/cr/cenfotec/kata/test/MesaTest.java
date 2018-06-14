@@ -1,8 +1,11 @@
 package ac.cr.cenfotec.kata.test;
 
+import static org.junit.Assert.*;
+
 import java.util.ArrayList;
 
 import org.junit.Before;
+import org.junit.Test;
 
 import ac.cr.cenfotec.logica.Jugador;
 import ac.cr.cenfotec.logica.Mesa;
@@ -34,5 +37,15 @@ public class MesaTest {
 		mesa.addJugador(jugador2);
 		mesa.addJugador(jugador3);
 
+	}
+
+	@Test(expected = Exception.class)
+	public void mesaLlena() throws Exception {
+
+		Jugador jugadorAgregado = new Jugador();
+		assertTrue(mesa.addJugador(jugadorAgregado));
+
+		Jugador jugadorNoAgregado = new Jugador();
+		assertTrue(mesa.addJugador(jugadorNoAgregado));
 	}
 }

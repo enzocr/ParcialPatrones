@@ -36,8 +36,12 @@ public class Mesa {
 	public boolean addJugador(Jugador jugador) throws Exception {
 		if (jugadoresIsNull()) {
 
-			getJugadores().add(jugador);
-
+			if (getJugadores().size() == 4) {
+				throw new Exception("Mesa llena");
+			} else {
+				getJugadores().add(jugador);
+				return true;
+			}
 		}
 		return false;
 
