@@ -39,4 +39,16 @@ public class Repartidor {
 		this.getNaipe().getNaipe().remove(cartaRepartida);
 		return true;
 	}
+
+	public void cambiarMano(Jugador jugador) throws Exception {
+		for (Carta carta : jugador.getMano()) {
+			devolverCarta(carta);
+		}
+		darCarta(jugador);
+	}
+
+	public void devolverCarta(Carta carta) {
+		this.getNaipe().getNaipe().add(carta);
+	}
+
 }

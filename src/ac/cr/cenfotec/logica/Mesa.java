@@ -57,9 +57,12 @@ public class Mesa {
 
 	public String empezarAJugar21() throws Exception {
 		repartir();
-
+		for (Jugador jugador : getJugadores()) {
+			if (verificarCambio(jugador.getMano())) {
+				getRepartidor().cambiarMano(jugador);
+			}
+		}
 		return "El ganador es: " + elGanador(getJugadores()).getNombre();
-
 	}
 
 	public Jugador elGanador(ArrayList<Jugador> listaJugadores) throws Exception {
@@ -92,6 +95,25 @@ public class Mesa {
 				getRepartidor().darCarta(j);
 			}
 
+		}
+	}
+
+	public boolean verificarCambio(ArrayList<Carta> mano) {
+		int valido = 0;
+		for (Carta carta : mano) {
+			if (carta.getNombre().equals("Jota") || carta.getNombre().equals("Quina")
+					|| carta.getNombre().equals("Ka")) {
+				valido++;
+			}
+			if (carta.getNombre().equals("Tres")) {
+				valido++;
+			}
+		}
+		if (valido == 2) {
+			return true;
+
+		} else {
+			return false;
 		}
 	}
 }

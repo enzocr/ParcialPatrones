@@ -61,4 +61,15 @@ public class MesaTest {
 		assertEquals(lista.size(), jugador1.getMano().size());
 
 	}
+
+	@Test
+	public void verificarCambio() throws Exception {
+		ArrayList<Carta> mano = new ArrayList<>();
+		Carta c1 = new Carta("Jota", "Flores", 10);
+		Carta c2 = new Carta("Tres", "Flores", 3);
+		mano.add(c1);
+		mano.add(c2);
+		assertTrue(mesa.verificarCambio(mano));
+	}
+
 }
