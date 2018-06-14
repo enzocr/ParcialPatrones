@@ -1,6 +1,7 @@
 package ac.cr.cenfotec.logica;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Naipe {
 	private ArrayList<Carta> cartas;
@@ -23,6 +24,7 @@ public class Naipe {
 		inicializarEscudos();
 		inicializarEstrellas();
 		inicializarGotas();
+		Collections.shuffle(getNaipe());
 
 	}
 
