@@ -55,10 +55,32 @@ public class Mesa {
 		return true;
 	}
 
-	public void empezarAJugar21() throws Exception {
+	public String empezarAJugar21() throws Exception {
 		repartir();
 
-		
+		return "El ganador es: " + elGanador(getJugadores()).getNombre();
+
+	}
+
+	public Jugador elGanador(ArrayList<Jugador> listaJugadores) throws Exception {
+		Jugador ganador = null;
+		int valor = 0;
+		int mayor = 0;
+
+		for (Jugador jugador : listaJugadores) {
+
+			for (Carta carta : jugador.getMano()) {
+				valor += carta.getValor();
+			}
+			if (valor == mayor) {
+				ganador = new Jugador("EMPATE");
+			}
+			if (valor > mayor) {
+				ganador = jugador;
+			}
+
+		}
+		return ganador;
 	}
 
 	public void repartir() throws Exception {
