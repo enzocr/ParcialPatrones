@@ -65,4 +65,14 @@ public class Jugador {
 		return true;
 	}
 
+	public Carta cogerCarta(Carta carta) throws Exception {
+
+		if (getMano().add(carta)) {
+			return carta;
+		}
+		return null;
+	}
+
+	
+
 }

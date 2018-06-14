@@ -6,6 +6,7 @@ public class Mesa {
 
 	private Repartidor repartidor;
 	private ArrayList<Jugador> jugadores;
+	private Naipe deck;
 
 	public Mesa() {
 		this.repartidor = null;
@@ -31,6 +32,14 @@ public class Mesa {
 
 	public void setJugadores(ArrayList<Jugador> jugadores) {
 		this.jugadores = jugadores;
+	}
+
+	public Naipe getDeck() {
+		return deck;
+	}
+
+	public void setDeck(Naipe deck) {
+		this.deck = deck;
 	}
 
 	public boolean addJugador(Jugador jugador) throws Exception {
@@ -72,9 +81,44 @@ public class Mesa {
 		if (!repartir(7)) {
 			return false;
 		} else {
-			return true;
-			
+			if (deckIsNull()) {
+
+				for (Jugador jugador : getJugadores()) {
+					jugadorCogeCartaDelDeck(jugador);
+					
+				}
+				return true;
+			}
+
 		}
+		return false;
+	}
+
+	public boolean jugadorCogeCartaDelDeck(Jugador jugador) throws Exception {
+		ArrayList<Carta> cartasRepartidas = new ArrayList<>();
+		int contador = 0;
+		Carta cartaRepartida = null;
+		do {
+
+			String nombre = this.getDeck().getNaipe().get(contador + 1).getNombre();
+			String palo = this.getDeck().getNaipe().get(contador + 1).getPalo();
+			Carta carta = new Carta(nombre, palo, this.getDeck().getNaipe().get(contador + 1).getValor());
+			cartaRepartida = carta;
+
+		} while (cartaRepartida == null);
+
+		jugador.getMano().add(cartaRepartida);
+		cartasRepartidas.add(cartaRepartida);
+		this.getDeck().getNaipe().remove(cartaRepartida);
+		return true;
+	}
+
+	public boolean deckIsNull() throws Exception {
+		if (this.deck == null) {
+			this.deck = new Naipe();
+			return true;
+		}
+		return true;
 	}
 
 	public Jugador elGanador(ArrayList<Jugador> listaJugadores) throws Exception {
@@ -167,4 +211,5 @@ public class Mesa {
 			return false;
 		}
 	}
+
 }
