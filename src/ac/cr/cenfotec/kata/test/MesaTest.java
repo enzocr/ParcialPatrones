@@ -92,8 +92,10 @@ public class MesaTest {
 		assertTrue(mesa.verificar21YMedio(mano));
 	}
 
-	@Test
+	@Test(expected = Exception.class)
 	public void empezarPartidaRon() throws Exception {
+
 		assertTrue(mesa.empezarPartidaDeRon());
+		assertTrue(mesa.jugadorCogeCartaDelDeck(jugador1));
 	}
 }

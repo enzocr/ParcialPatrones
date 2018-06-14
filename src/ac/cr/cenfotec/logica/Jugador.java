@@ -73,6 +73,10 @@ public class Jugador {
 		return null;
 	}
 
-	
+	public Carta botarCarta() {
+		int numeroRandom = (int) (Math.random() * 2) + 1;
+		Carta carta = getMano().get(numeroRandom);
+		return carta;
+	}
 
 }

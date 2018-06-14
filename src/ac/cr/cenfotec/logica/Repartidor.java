@@ -31,7 +31,7 @@ public class Repartidor {
 			String palo = this.getNaipe().getNaipe().get(contador + 1).getPalo();
 			Carta carta = new Carta(nombre, palo, this.getNaipe().getNaipe().get(contador + 1).getValor());
 			cartaRepartida = carta;
-
+			contador++;
 		} while (cartaRepartida == null);
 
 		jugador.getMano().add(cartaRepartida);

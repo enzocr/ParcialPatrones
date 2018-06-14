@@ -85,7 +85,7 @@ public class Mesa {
 
 				for (Jugador jugador : getJugadores()) {
 					jugadorCogeCartaDelDeck(jugador);
-					
+					this.getDeck().getNaipe().add(jugador.botarCarta());
 				}
 				return true;
 			}
@@ -98,14 +98,11 @@ public class Mesa {
 		ArrayList<Carta> cartasRepartidas = new ArrayList<>();
 		int contador = 0;
 		Carta cartaRepartida = null;
-		do {
 
-			String nombre = this.getDeck().getNaipe().get(contador + 1).getNombre();
-			String palo = this.getDeck().getNaipe().get(contador + 1).getPalo();
-			Carta carta = new Carta(nombre, palo, this.getDeck().getNaipe().get(contador + 1).getValor());
-			cartaRepartida = carta;
-
-		} while (cartaRepartida == null);
+		String nombre = this.getDeck().getNaipe().get(contador + 1).getNombre();
+		String palo = this.getDeck().getNaipe().get(contador + 1).getPalo();
+		Carta carta = new Carta(nombre, palo, this.getDeck().getNaipe().get(contador + 1).getValor());
+		cartaRepartida = carta;
 
 		jugador.getMano().add(cartaRepartida);
 		cartasRepartidas.add(cartaRepartida);
