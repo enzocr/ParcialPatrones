@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
+import ac.cr.cenfotec.logica.Carta;
 import ac.cr.cenfotec.logica.Jugador;
 import ac.cr.cenfotec.logica.Mesa;
 import ac.cr.cenfotec.logica.Naipe;
@@ -47,5 +48,17 @@ public class MesaTest {
 
 		Jugador jugadorNoAgregado = new Jugador();
 		assertTrue(mesa.addJugador(jugadorNoAgregado));
+	}
+
+	@Test(expected = NullPointerException.class)
+	public void empezar21() throws Exception {
+		mesa.empezarAJugar21();
+		Carta c1 = new Carta("As", "Flores", 1);
+		Carta c2 = new Carta("Dos", "Estrellas", 2);
+		ArrayList<Carta> lista = new ArrayList<>();
+		lista.add(c1);
+		lista.add(c2);
+		assertEquals(lista.size(), jugador1.getMano().size());
+
 	}
 }

@@ -54,4 +54,22 @@ public class Mesa {
 		}
 		return true;
 	}
+
+	public void empezarAJugar21() throws Exception {
+		repartir();
+
+		
+	}
+
+	public void repartir() throws Exception {
+		for (int i = 0; i < 2; i++) {
+			for (Jugador j : getJugadores()) {
+				getRepartidor().darCarta(j);
+			}
+			for (Jugador j : getJugadores()) {
+				getRepartidor().darCarta(j);
+			}
+
+		}
+	}
 }
