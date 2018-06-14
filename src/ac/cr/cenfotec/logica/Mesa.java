@@ -209,4 +209,13 @@ public class Mesa {
 		}
 	}
 
+	public boolean reset() throws Exception {
+		//this.repartidor = null;
+		getRepartidor().getNaipe().inicializar();
+		this.jugadores = new ArrayList<>();
+		this.deck = null;
+		return true;
+
+	}
+
 }

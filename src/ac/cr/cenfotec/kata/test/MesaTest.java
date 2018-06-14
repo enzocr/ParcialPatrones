@@ -98,4 +98,13 @@ public class MesaTest {
 		assertTrue(mesa.empezarPartidaDeRon());
 		assertTrue(mesa.jugadorCogeCartaDelDeck(jugador1));
 	}
+
+	@Test
+	public void reset() throws NullPointerException {
+		try {
+			assertTrue(mesa.reset());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
