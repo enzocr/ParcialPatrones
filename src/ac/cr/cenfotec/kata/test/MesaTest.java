@@ -50,16 +50,6 @@ public class MesaTest {
 		assertTrue(mesa.addJugador(jugadorNoAgregado));
 	}
 
-	@Test
-	public void verificarComodin() throws Exception {
-		ArrayList<Carta> mano = new ArrayList<>();
-		Carta c1 = new Carta("Jota", "Escudos", 10);
-		Carta c2 = new Carta("Tres", "Flores", 3);
-		mano.add(c1);
-		mano.add(c2);
-		assertTrue(mesa.verificarComodin(mano));
-	}
-
 	@Test(expected = NullPointerException.class)
 	public void empezar21() throws Exception {
 		mesa.empezarAJugar21();
@@ -70,6 +60,16 @@ public class MesaTest {
 		lista.add(c2);
 		assertEquals(lista.size(), jugador1.getMano().size());
 
+	}
+
+	@Test
+	public void verificarComodin() throws Exception {
+		ArrayList<Carta> mano = new ArrayList<>();
+		Carta c1 = new Carta("Jota", "Escudos", 10);
+		Carta c2 = new Carta("Tres", "Flores", 3);
+		mano.add(c1);
+		mano.add(c2);
+		assertTrue(mesa.verificarComodin(mano));
 	}
 
 	@Test
@@ -92,4 +92,8 @@ public class MesaTest {
 		assertTrue(mesa.verificar21YMedio(mano));
 	}
 
+	@Test
+	public void empezarPartidaRon() throws Exception {
+		assertTrue(mesa.empezarPartidaDeRon());
+	}
 }

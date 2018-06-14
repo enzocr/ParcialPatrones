@@ -56,13 +56,25 @@ public class Mesa {
 	}
 
 	public String empezarAJugar21() throws Exception {
-		repartir();
-		for (Jugador jugador : getJugadores()) {
-			if (verificarCambio(jugador.getMano())) {
-				getRepartidor().cambiarMano(jugador);
+		if (!repartir(2)) {
+			return null;
+		} else {
+			for (Jugador jugador : getJugadores()) {
+				if (verificarCambio(jugador.getMano())) {
+					getRepartidor().cambiarMano(jugador);
+				}
 			}
+			return "El ganador es: " + elGanador(getJugadores()).getNombre();
 		}
-		return "El ganador es: " + elGanador(getJugadores()).getNombre();
+	}
+
+	public boolean empezarPartidaDeRon() throws Exception {
+		if (!repartir(7)) {
+			return false;
+		} else {
+			return true;
+			
+		}
 	}
 
 	public Jugador elGanador(ArrayList<Jugador> listaJugadores) throws Exception {
@@ -95,16 +107,16 @@ public class Mesa {
 		return ganador;
 	}
 
-	public void repartir() throws Exception {
-		for (int i = 0; i < 2; i++) {
+	@SuppressWarnings("unused")
+	public boolean repartir(int x) throws Exception {
+		for (int i = 0; i < x; i++) {
 			for (Jugador j : getJugadores()) {
 				getRepartidor().darCarta(j);
 			}
-			for (Jugador j : getJugadores()) {
-				getRepartidor().darCarta(j);
-			}
+			return true;
 
 		}
+		return false;
 	}
 
 	public boolean verificarComodin(ArrayList<Carta> mano) {
